@@ -79,7 +79,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // MARK: Initialize L-system state
         
         // What the system will draw, without any re-writes based upon production rules
-        axiom = "F-F-F-F-"
+        axiom = "F+F+F+F+"
         
         // DEBUG: What's the word?
         print("Axiom is:")
@@ -94,7 +94,8 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // The rules the define how the word is re-written with each new generation
         rules = [
             "F" : [
-                Successor(odds: 1, text: "FFF+FF-FF+FF-FFF")
+                Successor(odds: 1, text: "FFF+FF-FFF-FF+FFF"),
+                Successor(odds: 1, text: "FFF-FF+FFF+FF-FFF"),
             ],
         ]
         
@@ -166,7 +167,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // MARK: Initialize L-system rendering instructions
         
         // The length of the line segments used when drawing the system, at generation 0
-        length = 180
+        length = 90
         
         // The factor by which to reduce the initial line segment length after each generation / word re-write
         reduction = 9
@@ -202,14 +203,14 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
         
-        // Only run rendering logic once
+        // Draw just once
         if canvas.frameCount == 0 {
-
+            
             for character in word {
                 
                 // DEBUG: What character is being rendered?
-                print(character)
-             
+                //                    print(character)
+                
                 // Render based on this character
                 switch character {
                 case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
@@ -218,31 +219,30 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
                 case "+":
                     // Turn to the left
                     turtle.left(by: angle)
-                    print("Turn left\n")
+                //                        print("Turn left\n")
                 case "-":
                     // Turn to the right
                     turtle.right(by: angle)
-                    print("Turn right\n")
+                //                        print("Turn right\n")
                 case "[":
                     // Save position and heading
                     turtle.saveState()
-                    print("Save current state (position and heading)\n")
+                //                        print("Save current state (position and heading)\n")
                 case "]":
                     // Restore position and heading
                     turtle.restoreState()
-                    print("Restore most recently saved state from stack (position and heading)\n")
+                //                        print("Restore most recently saved state from stack (position and heading)\n")
                 default:
                     // Any other character means move forward
                     turtle.forward(steps: Int(round(length)))
-                    print("Forward\n")
+                    //                        print("Forward\n")
                     break
                 }
-                
+
             }
             
         }
         
-
     }
     
 }
