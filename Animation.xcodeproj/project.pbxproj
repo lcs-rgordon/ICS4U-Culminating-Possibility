@@ -20,6 +20,10 @@
 		814ADAFB248EB45F00F80486 /* AudioInputSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814ADAFA248EB45F00F80486 /* AudioInputSketch.swift */; };
 		814ADAFD248EB56900F80486 /* EmptySketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814ADAFC248EB56900F80486 /* EmptySketch.swift */; };
 		814ADAFF248EB5E300F80486 /* StaticSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814ADAFE248EB5E300F80486 /* StaticSketch.swift */; };
+		817485DD2642EDA3006DE482 /* Successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485DC2642EDA3006DE482 /* Successor.swift */; };
+		817485E02642EDDC006DE482 /* Predecessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485DF2642EDDC006DE482 /* Predecessor.swift */; };
+		817485E52642EE50006DE482 /* LindenmayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485E42642EE50006DE482 /* LindenmayerSystem.swift */; };
+		817485E82642EFC6006DE482 /* Visualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485E72642EFC6006DE482 /* Visualizer.swift */; };
 		818878412199C645008CB375 /* CanvasGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8188783A2199C645008CB375 /* CanvasGraphics.framework */; };
 		818878422199C645008CB375 /* CanvasGraphics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8188783A2199C645008CB375 /* CanvasGraphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		818878532199C7EA008CB375 /* PerlinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818878502199C7EA008CB375 /* PerlinGenerator.swift */; };
@@ -73,6 +77,10 @@
 		814ADAFA248EB45F00F80486 /* AudioInputSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInputSketch.swift; sourceTree = "<group>"; };
 		814ADAFC248EB56900F80486 /* EmptySketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySketch.swift; sourceTree = "<group>"; };
 		814ADAFE248EB5E300F80486 /* StaticSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSketch.swift; sourceTree = "<group>"; };
+		817485DC2642EDA3006DE482 /* Successor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Successor.swift; sourceTree = "<group>"; };
+		817485DF2642EDDC006DE482 /* Predecessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predecessor.swift; sourceTree = "<group>"; };
+		817485E42642EE50006DE482 /* LindenmayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LindenmayerSystem.swift; sourceTree = "<group>"; };
+		817485E72642EFC6006DE482 /* Visualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visualizer.swift; sourceTree = "<group>"; };
 		8188783A2199C645008CB375 /* CanvasGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CanvasGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		818878492199C720008CB375 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		8188784E2199C7DF008CB375 /* CanvasLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasLiveViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +179,10 @@
 				814ADAFE248EB5E300F80486 /* StaticSketch.swift */,
 				814ADAFC248EB56900F80486 /* EmptySketch.swift */,
 				819F9E6D26415FDC00C7883F /* LindenmayerSystemSketch.swift */,
+				817485DC2642EDA3006DE482 /* Successor.swift */,
+				817485DF2642EDDC006DE482 /* Predecessor.swift */,
+				817485E42642EE50006DE482 /* LindenmayerSystem.swift */,
+				817485E72642EFC6006DE482 /* Visualizer.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -497,13 +509,17 @@
 				81064A1C1C132DA2007ED524 /* Sketch.swift in Sources */,
 				819F9E6E26415FDC00C7883F /* LindenmayerSystemSketch.swift in Sources */,
 				81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */,
+				817485DD2642EDA3006DE482 /* Successor.swift in Sources */,
+				817485E52642EE50006DE482 /* LindenmayerSystem.swift in Sources */,
 				814ADAF5248EAB6A00F80486 /* TurtleSketch.swift in Sources */,
 				814ADAF9248EB34900F80486 /* BasicSketch.swift in Sources */,
+				817485E82642EFC6006DE482 /* Visualizer.swift in Sources */,
 				814ADAFB248EB45F00F80486 /* AudioInputSketch.swift in Sources */,
 				814ADAF1248E9F8200F80486 /* AudioAnalyser.swift in Sources */,
 				814ADAF3248E9FDA00F80486 /* Sketchable.swift in Sources */,
 				814ADAFD248EB56900F80486 /* EmptySketch.swift in Sources */,
 				814ADAFF248EB5E300F80486 /* StaticSketch.swift in Sources */,
+				817485E02642EDDC006DE482 /* Predecessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
