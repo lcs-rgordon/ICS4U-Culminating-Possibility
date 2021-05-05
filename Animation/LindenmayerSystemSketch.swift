@@ -213,21 +213,12 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
             // Get an index for the current chracter in the word
             let index = word.index(word.startIndex, offsetBy: canvas.frameCount)
             let character = word[index]
-            
-            // DEBUG: What character is being rendered?
-            print(character)
-            canvas.rotate(by: -1 * turtle.currentHeading())
-            canvas.translate(to: Point(x: -1 * turtle.xcor, y: -1 * turtle.ycor))
-            canvas.drawText(message: String(character), at: Point(x: 10, y: canvas.height - 25 - 15 * canvas.frameCount), size: 10)
-            canvas.translate(to: Point(x: turtle.xcor, y: turtle.ycor))
-            canvas.rotate(by: turtle.currentHeading())
-            
+                        
             // Render based on this character
             switch character {
-            case "F", "B":
-                // Move turtle forward (rounding off to nearest integer)
-                turtle.forward(steps: Int(round(length)))
-                print("Forward\n")
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                // Placeholder for changing colour
+                break
             case "+":
                 // Turn to the left
                 turtle.left(by: angle)
@@ -245,6 +236,9 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
                 turtle.restoreState()
                 print("Restore most recently saved state from stack (position and heading)\n")
             default:
+                // Any other character means move forward
+                turtle.forward(steps: Int(round(length)))
+                print("Forward\n")
                 break
             }
             
