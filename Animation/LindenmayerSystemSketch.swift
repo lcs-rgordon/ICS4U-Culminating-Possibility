@@ -27,6 +27,11 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // Enable faster rendering
         canvas.highPerformance = true
         
+        // Draw a grey rectangle to give the appearance of a ground, below a white sky
+        canvas.drawShapesWithBorders = false
+        canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 40, alpha: 100) // Grey
+        canvas.drawRectangle(at: Point(x: 0, y: 0), width: canvas.width, height: canvas.height / 3 * 2)
+        
         // Create a system that looks like a tree
         let coniferousTree = LindenmayerSystem(axiom: "F",
                                                rules: [
@@ -40,11 +45,6 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
                                                 ]
                                                ],
                                                generations: 5)
-        
-        // Draw a grey rectangle to give the appearance of a ground
-        canvas.drawShapesWithBorders = false
-        canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 40, alpha: 100) // Grey
-        canvas.drawRectangle(at: Point(x: 0, y: 0), width: canvas.width, height: canvas.height / 3 * 2)
         
         // Visualize a tree in the background (smaller)
         var backgroundTree = Visualizer(for: coniferousTree,
