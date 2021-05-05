@@ -8,6 +8,18 @@
 import Foundation
 import CanvasGraphics
 
+// Make code in the L-System more readable...
+typealias Predecessor = Character
+
+// What replaces a predecessor in an L-system
+struct Successor {
+    
+    // The likelihood of this successor being applied, when combined with other successors assigned to a given predecessor
+    let odds: Int
+    
+    // The text that replaces the predecessor in the L-system's word
+    let text: String
+}
 
 // NOTE: This is a completely empty sketch; it can be used as a template.
 class LindenmayerSystemSketch: NSObject, Sketchable {
@@ -31,7 +43,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
     let generations: Int
     
     // The rules the define how the word is re-written with each new generation
-    let rules: [Character: String]
+    let rules: [Predecessor: [Successor]]
     
     // MARK: L-system rendering instructions
     
@@ -72,7 +84,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // DEBUG: What's the word?
         print("Axiom is:")
         print("\(axiom)")
-
+        
         // Generation 0 – we begin with the word the same as the axiom
         word = axiom
         
@@ -81,7 +93,9 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         
         // The rules the define how the word is re-written with each new generation
         rules = [
-            "F" : "FFF+FF-FF+FF-FFF",
+            "F" : [
+                Successor(odds: 1, text: "FFF+FF-FF+FF-FFF")
+            ],
         ]
         
         // Only write a new word if there are more than 0 generations
@@ -96,13 +110,50 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
                 // Replace each character in the word, based on the production rules
                 for character in word {
                     
-                    // When a value exists for the key, use it, otherwise, replace with the key
-                    // e.g.: If "B", replace with "FF[+B][-B]"
-                    // e.g.: If "U", there is no value for "U" in the dictionary, so replace with "U"
-                    newWord.append(rules[character] ?? String(character))
+                    // When successor rule(s) exist for a predecessor character, use them...
+                    if let ruleSet = rules[character] {
+                        
+                        // When there is only one possible sucessor for the predecessor, just do the straight replacement
+                        if ruleSet.count == 1 {
+                            
+                            newWord.append(ruleSet.first!.text)
+                            
+                        } else {
+                            
+                            // There are multiple possible rules that could be applied
+                            // Use odds...
+                            var total = 0
+                            for rule in ruleSet {
+                                total += rule.odds
+                            }
+                            
+                            // Get a random integet between 1 and the total odds for this rule set
+                            let randomValue = Int.random(in: 1...total)
+                            
+                            // Find the correct successor rule to apply
+                            var runningTotal = 0
+                            for rule in ruleSet {
+                                runningTotal += rule.odds
+                                
+                                // See if this current rule is the one to be applied
+                                if randomValue <= runningTotal {
+                                    newWord.append(rule.text)
+                                    break // Stop searching for a successor rule
+                                }
+                            }
+                            
+                        }
+                        
+                    } else {
+                        
+                        // No successor rules exist for the current predecessor character
+                        // So, just copy the predecessor character, as is, to the new word
+                        newWord.append(String(character))
+                    }
+                    
                     
                 }
-                                
+                
                 // Replace the old word with the new word
                 word = newWord
                 print("After generation \(generation) the word is:")
@@ -155,10 +206,10 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         if canvas.frameCount > 0 {
             turtle.restoreStateOnCanvas()
         }
-            
+        
         // Only run rendering logic until the end of the number of characters in the word
         if canvas.frameCount < word.count {
-
+            
             // Get an index for the current chracter in the word
             let index = word.index(word.startIndex, offsetBy: canvas.frameCount)
             let character = word[index]
@@ -170,7 +221,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
             canvas.drawText(message: String(character), at: Point(x: 10, y: canvas.height - 25 - 15 * canvas.frameCount), size: 10)
             canvas.translate(to: Point(x: turtle.xcor, y: turtle.ycor))
             canvas.rotate(by: turtle.currentHeading())
-
+            
             // Render based on this character
             switch character {
             case "F", "B":
@@ -198,10 +249,10 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
             }
             
             // Render turtle so that it's clear what's happening
-//            turtle.drawSelf()
+            //            turtle.drawSelf()
             
         }
-                
+        
         
     }
     
