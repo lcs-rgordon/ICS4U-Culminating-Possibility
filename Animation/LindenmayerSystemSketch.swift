@@ -93,11 +93,14 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         
         // The rules the define how the word is re-written with each new generation
         rules = [
-            "F" : [
-                Successor(odds: 1, text: "F[+F]F[-F]F"),
-                Successor(odds: 2, text: "FF-[-F+F+O]+[+F-F-F]"),
-                Successor(odds: 2, text: "FF+[+F-F-F]-[-F+F+O]"),
+            "F": [
+                Successor(odds: 1, text: "3F[++1F[X]][+2F][-4F][--5F[X]]6F"),
+                Successor(odds: 1, text: "3F[+1F][+2F][-4F]5F"),
+                Successor(odds: 1, text: "3F[+1F][-2F][--6F]4F"),
             ],
+            "X": [
+                Successor(odds: 1, text: "X")
+            ]
         ]
         
         // Only write a new word if there are more than 0 generations
@@ -168,19 +171,19 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // MARK: Initialize L-system rendering instructions
         
         // The length of the line segments used when drawing the system, at generation 0
-        length = 160
+        length = 27
         
         // The factor by which to reduce the initial line segment length after each generation / word re-write
-        reduction = 2
+        reduction = 1.25
         
         // The angle by which the turtle will turn left or right; in degrees.
-        angle = 22
+        angle = 20
         
         // Where the turtle begins drawing on the canvas
-        initialPosition = Point(x: 50, y: 50)
+        initialPosition = Point(x: 400, y: 400)
         
         // The initial direction of the turtle
-        initialHeading = 70
+        initialHeading = 270
         
         // MARK: Prepare for rendering L-system
         
@@ -198,16 +201,16 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         turtle.setHeading(to: initialHeading)
         turtle.penDown()
         canvas.restoreState()
-
+        
         // DEBUG:
         print("\nNow rendering...\n")
         
-        // Render the system
+        // Render the entire system
         for character in word {
             
             // Save the state of the canvas (no transformations)
             canvas.saveState()
-
+            
             // Bring canvas into same orientation and origin position as
             // it was when last character in the word was rendered
             turtle.restoreStateOnCanvas()
@@ -233,21 +236,21 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
                 // Any other character means move forward
                 turtle.forward(steps: Int(round(length)))
                 break
-
+                
             }
-
+            
             // Restore the state of the canvas (no transformations)
             canvas.restoreState()
-                            
+            
         }
-
+        
     }
     
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
         
         // Nothing is being animated, so nothing needed here
-                
+        
     }
     
 }
