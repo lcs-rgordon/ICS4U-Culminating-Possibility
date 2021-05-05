@@ -8,6 +8,7 @@
 import Foundation
 import CanvasGraphics
 
+
 // NOTE: This is a completely empty sketch; it can be used as a template.
 class LindenmayerSystemSketch: NSObject, Sketchable {
     
@@ -58,7 +59,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         canvas = Canvas(width: 500, height: 500)
         
         // Draw slowly
-        canvas.framesPerSecond = 1
+        canvas.framesPerSecond = 15
         
         // Create turtle to draw with
         turtle = Tortoise(drawingUpon: canvas)
@@ -66,7 +67,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // MARK: Initialize L-system state
         
         // What the system will draw, without any re-writes based upon production rules
-        axiom = "FFF[+B][-B]"
+        axiom = "F-F-F-F-"
         
         // DEBUG: What's the word?
         print("Axiom is:")
@@ -76,12 +77,11 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         word = axiom
         
         // How many times to re-write the word, based upon production rules
-        generations = 0
+        generations = 2
         
         // The rules the define how the word is re-written with each new generation
         rules = [
-            "F" : "F",
-            "B" : "FF[+B][-B]"
+            "F" : "FFF+FF-FF+FF-FFF",
         ]
         
         // Only write a new word if there are more than 0 generations
@@ -115,13 +115,13 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // MARK: Initialize L-system rendering instructions
         
         // The length of the line segments used when drawing the system, at generation 0
-        length = 80
+        length = 180
         
         // The factor by which to reduce the initial line segment length after each generation / word re-write
-        reduction = 2
+        reduction = 9
         
         // The angle by which the turtle will turn left or right; in degrees.
-        angle = 60
+        angle = 90
         
         // Where the turtle begins drawing on the canvas
         initialPosition = Point(x: 250, y: 100)
@@ -198,7 +198,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
             }
             
             // Render turtle so that it's clear what's happening
-            turtle.drawSelf()
+//            turtle.drawSelf()
             
         }
                 
