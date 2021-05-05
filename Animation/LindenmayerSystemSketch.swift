@@ -79,7 +79,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // MARK: Initialize L-system state
         
         // What the system will draw, without any re-writes based upon production rules
-        axiom = "F+F+F+F+"
+        axiom = "F"
         
         // DEBUG: What's the word?
         print("Axiom is:")
@@ -89,13 +89,14 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         word = axiom
         
         // How many times to re-write the word, based upon production rules
-        generations = 2
+        generations = 5
         
         // The rules the define how the word is re-written with each new generation
         rules = [
             "F" : [
-                Successor(odds: 1, text: "FFF+FF-FFF-FF+FFF"),
-                Successor(odds: 1, text: "FFF-FF+FFF+FF-FFF"),
+                Successor(odds: 1, text: "F[+F]F[-F]F"),
+                Successor(odds: 2, text: "FF-[-F+F+O]+[+F-F-F]"),
+                Successor(odds: 2, text: "FF+[+F-F-F]-[-F+F+O]"),
             ],
         ]
         
@@ -167,19 +168,19 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // MARK: Initialize L-system rendering instructions
         
         // The length of the line segments used when drawing the system, at generation 0
-        length = 90
+        length = 160
         
         // The factor by which to reduce the initial line segment length after each generation / word re-write
-        reduction = 9
+        reduction = 2
         
         // The angle by which the turtle will turn left or right; in degrees.
-        angle = 90
+        angle = 22
         
         // Where the turtle begins drawing on the canvas
-        initialPosition = Point(x: 250, y: 100)
+        initialPosition = Point(x: 50, y: 50)
         
         // The initial direction of the turtle
-        initialHeading = 90
+        initialHeading = 70
         
         // MARK: Prepare for rendering L-system
         
@@ -191,58 +192,62 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         }
         
         // Move to designated starting position
+        canvas.saveState()
         turtle.penUp()
         turtle.setPosition(to: initialPosition)
         turtle.setHeading(to: initialHeading)
         turtle.penDown()
-        
+        canvas.restoreState()
+
         // DEBUG:
         print("\nNow rendering...\n")
+        
+        // Render the system
+        for character in word {
+            
+            // Save the state of the canvas (no transformations)
+            canvas.saveState()
+
+            // Bring canvas into same orientation and origin position as
+            // it was when last character in the word was rendered
+            turtle.restoreStateOnCanvas()
+            
+            // Render based on this character
+            switch character {
+            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+                // Placeholder for changing colour
+                break
+            case "+":
+                // Turn to the left
+                turtle.left(by: angle)
+            case "-":
+                // Turn to the right
+                turtle.right(by: angle)
+            case "[":
+                // Save position and heading
+                turtle.saveState()
+            case "]":
+                // Restore position and heading
+                turtle.restoreState()
+            default:
+                // Any other character means move forward
+                turtle.forward(steps: Int(round(length)))
+                break
+
+            }
+
+            // Restore the state of the canvas (no transformations)
+            canvas.restoreState()
+                            
+        }
+
     }
     
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
         
-        // Draw just once
-        if canvas.frameCount == 0 {
-            
-            for character in word {
+        // Nothing is being animated, so nothing needed here
                 
-                // DEBUG: What character is being rendered?
-                //                    print(character)
-                
-                // Render based on this character
-                switch character {
-                case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
-                    // Placeholder for changing colour
-                    break
-                case "+":
-                    // Turn to the left
-                    turtle.left(by: angle)
-                //                        print("Turn left\n")
-                case "-":
-                    // Turn to the right
-                    turtle.right(by: angle)
-                //                        print("Turn right\n")
-                case "[":
-                    // Save position and heading
-                    turtle.saveState()
-                //                        print("Save current state (position and heading)\n")
-                case "]":
-                    // Restore position and heading
-                    turtle.restoreState()
-                //                        print("Restore most recently saved state from stack (position and heading)\n")
-                default:
-                    // Any other character means move forward
-                    turtle.forward(steps: Int(round(length)))
-                    //                        print("Forward\n")
-                    break
-                }
-
-            }
-            
-        }
-        
     }
     
 }
