@@ -32,43 +32,38 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 40, alpha: 100) // Grey
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: canvas.width, height: canvas.height / 3 * 2)
         
-        // Create a system that looks like a tree
-        let coniferousTree = LindenmayerSystem(axiom: "F",
+        // Create a basic plant like form
+        let plant = LindenmayerSystem(axiom: "F",
                                                rules: [
                                                 "F": [
-                                                    Successor(odds: 1, text: "3F[++1F[X]][+2F][-4F][--5F[X]]6F"),
-                                                    Successor(odds: 1, text: "3F[+1F][+2F][-4F]5F"),
-                                                    Successor(odds: 1, text: "3F[+1F][-2F][--6F]4F"),
+                                                    Successor(odds: 1, text: "F[-F][+F]"),
                                                 ],
-                                                "X": [
-                                                    Successor(odds: 1, text: "X")
-                                                ]
                                                ],
-                                               generations: 5)
+                                               generations: 2)
         
-        // Visualize a tree in the background (smaller)
-        var backgroundTree = Visualizer(for: coniferousTree,
+        // Visualize a plant in the background (smaller)
+        var backgroundplant = Visualizer(for: plant,
                                         on: canvas,
                                         length: 15,
                                         reduction: 1.25,
                                         angle: 20,
-                                        initialPosition: Point(x: 200, y: 400),
-                                        initialHeading: 270)
+                                        initialPosition: Point(x: 200, y: 150),
+                                        initialHeading: 90)
         
-        // Actually render the tree
-        backgroundTree.render()
+        // Actually render the plant
+        backgroundplant.render()
         
-        // Visualize a tree in the foreground (larger)
-        var foregroundTree = Visualizer(for: coniferousTree,
+        // Visualize a plant in the foreground (larger)
+        var foregroundplant = Visualizer(for: plant,
                                         on: canvas,
                                         length: 27,
                                         reduction: 1.25,
                                         angle: 20,
-                                        initialPosition: Point(x: 400, y: 400),
-                                        initialHeading: 270)
+                                        initialPosition: Point(x: 400, y: 100),
+                                        initialHeading: 90)
         
-        // Actually render the tree
-        foregroundTree.render()
+        // Actually render the plant
+        foregroundplant.render()
         
     }
     
