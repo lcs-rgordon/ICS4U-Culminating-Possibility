@@ -125,6 +125,9 @@ struct Visualizer {
             case "]":
                 // Restore position and heading
                 turtle.restoreState()
+            case "B":
+                // Render a small berry
+                canvas.drawEllipse(at: Point(x: 0, y: 0), width: 5, height: 5)
             default:
                 // Any other character means move forward
                 turtle.forward(steps: Int(round(length)))

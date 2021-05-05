@@ -31,17 +31,40 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         canvas.drawShapesWithBorders = false
         canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 40, alpha: 100) // Grey
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: canvas.width, height: canvas.height / 3 * 2)
+
+        // Set fill color back to black
+        canvas.fillColor = Color.black
         
         // Create a basic plant like form
-        let plant = LindenmayerSystem(axiom: "GGF",
+        let plant = LindenmayerSystem(axiom: "EEF",
                                                rules: [
                                                 "F": [
-                                                    Successor(odds: 1, text: "GGF[-F][+F]"),
-                                                    Successor(odds: 1, text: "GF[--F][+F]"),
-                                                    Successor(odds: 1, text: "GGGF[-F][++F]"),
+                                                    Successor(odds: 3, text: "XXG[-G][+G]"),
+                                                    Successor(odds: 3, text: "XG[--G][+G]"),
+                                                    Successor(odds: 3, text: "XXXG[-G][++G]"),
+                                                ],
+                                                "G": [
+                                                    Successor(odds: 3, text: "XXH[-H][+H]"),
+                                                    Successor(odds: 3, text: "XH[--H][+H]"),
+                                                    Successor(odds: 3, text: "XXXH[-H][++H]"),
+                                                ],
+                                                "H": [
+                                                    Successor(odds: 3, text: "XXI[-I][+I]"),
+                                                    Successor(odds: 3, text: "XI[--I][+I]"),
+                                                    Successor(odds: 3, text: "XXXI[-I][++I]"),
+                                                ],
+                                                "I": [
+                                                    Successor(odds: 3, text: "XXJ[-J][+J]"),
+                                                    Successor(odds: 3, text: "XJ[--J][+J]"),
+                                                    Successor(odds: 3, text: "XXXJ[-J][++J]"),
+                                                ],
+                                                "J": [
+                                                    Successor(odds: 3, text: "XXX[-FFB][+FB]"),
+                                                    Successor(odds: 3, text: "XX[--FFB][+FFFB]"),
+                                                    Successor(odds: 3, text: "XXXX[-FB][++FFB]"),
                                                 ],
                                                ],
-                                               generations: 4)
+                                               generations: 5)
         
         // Visualize a plant in the background (smaller)
         var backgroundplant = Visualizer(for: plant,
