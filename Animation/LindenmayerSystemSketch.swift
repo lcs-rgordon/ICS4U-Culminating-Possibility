@@ -33,13 +33,15 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: canvas.width, height: canvas.height / 3 * 2)
         
         // Create a basic plant like form
-        let plant = LindenmayerSystem(axiom: "F",
+        let plant = LindenmayerSystem(axiom: "GGF",
                                                rules: [
                                                 "F": [
-                                                    Successor(odds: 1, text: "F[-F][+F]"),
+                                                    Successor(odds: 1, text: "GGF[-F][+F]"),
+                                                    Successor(odds: 1, text: "GF[--F][+F]"),
+                                                    Successor(odds: 1, text: "GGGF[-F][++F]"),
                                                 ],
                                                ],
-                                               generations: 2)
+                                               generations: 4)
         
         // Visualize a plant in the background (smaller)
         var backgroundplant = Visualizer(for: plant,
