@@ -26,69 +26,36 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         
         // Enable faster rendering
         canvas.highPerformance = true
-        
-        // Draw a grey rectangle to give the appearance of a ground, below a white sky
-        canvas.drawShapesWithBorders = false
-        canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 40, alpha: 100) // Grey
-        canvas.drawRectangle(at: Point(x: 0, y: 0), width: canvas.width, height: canvas.height / 3 * 2)
+                
+        // Create a basic branching form
+        let stochasticExample = LindenmayerSystem(axiom: "AAAAF",
+                                                  rules: [
+                                                    "F": [
+                                                        Successor(odds: 1, text: "F[-F][+F]"),
+                                                        Successor(odds: 1, text: "F[--F][+F]"),
+                                                        Successor(odds: 1, text: "F[-F][++F]"),
+                                                    ],
+                                                    "X": [
+                                                        Successor(odds: 1, text: "XX"),
+                                                    ],
+                                                  ],
+                                                  generations: 3)
 
-        // Set fill color back to black
-        canvas.fillColor = Color.black
-        
-        // Create a basic plant like form
-        let plant = LindenmayerSystem(axiom: "EEF",
-                                               rules: [
-                                                "F": [
-                                                    Successor(odds: 3, text: "XXG[-G][+G]"),
-                                                    Successor(odds: 3, text: "XG[--G][+G]"),
-                                                    Successor(odds: 3, text: "XXXG[-G][++G]"),
-                                                ],
-                                                "G": [
-                                                    Successor(odds: 3, text: "XXH[-H][+H]"),
-                                                    Successor(odds: 3, text: "XH[--H][+H]"),
-                                                    Successor(odds: 3, text: "XXXH[-H][++H]"),
-                                                ],
-                                                "H": [
-                                                    Successor(odds: 3, text: "XXI[-I][+I]"),
-                                                    Successor(odds: 3, text: "XI[--I][+I]"),
-                                                    Successor(odds: 3, text: "XXXI[-I][++I]"),
-                                                ],
-                                                "I": [
-                                                    Successor(odds: 3, text: "XXJ[-J][+J]"),
-                                                    Successor(odds: 3, text: "XJ[--J][+J]"),
-                                                    Successor(odds: 3, text: "XXXJ[-J][++J]"),
-                                                ],
-                                                "J": [
-                                                    Successor(odds: 3, text: "XXX[-FFB][+FB]"),
-                                                    Successor(odds: 3, text: "XX[--FFB][+FFFB]"),
-                                                    Successor(odds: 3, text: "XXXX[-FB][++FFB]"),
-                                                ],
-                                               ],
-                                               generations: 5)
-        
-        // Visualize a plant in the background (smaller)
-        var backgroundplant = Visualizer(for: plant,
-                                        on: canvas,
-                                        length: 15,
-                                        reduction: 1.25,
-                                        angle: 20,
-                                        initialPosition: Point(x: 200, y: 150),
-                                        initialHeading: 90)
-        
-        // Actually render the plant
-        backgroundplant.render()
-        
-        // Visualize a plant in the foreground (larger)
-        var foregroundplant = Visualizer(for: plant,
-                                        on: canvas,
-                                        length: 27,
-                                        reduction: 1.25,
-                                        angle: 20,
-                                        initialPosition: Point(x: 400, y: 100),
-                                        initialHeading: 90)
-        
-        // Actually render the plant
-        foregroundplant.render()
+        for i in 0...3 {
+
+            // Visualize the form
+            var form = Visualizer(for: stochasticExample,
+                                  on: canvas,
+                                  length: 30,
+                                  reduction: 1.25,
+                                  angle: 30,
+                                  initialPosition: Point(x: 100 + i * 100, y: 250),
+                                  initialHeading: 90)
+
+            // Actually render the plant
+            form.render()
+
+        }
         
     }
     
