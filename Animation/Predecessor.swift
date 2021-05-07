@@ -8,5 +8,4 @@
 import Foundation
 
 // Make code in the L-System more readable...
-typealias Predecessor = Character
-
+typealias Predecessor = String

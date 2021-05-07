@@ -8,7 +8,7 @@
 import Foundation
 
 // What replaces a predecessor in an L-system
-struct Successor {
+struct Successor: Codable {
     
     // The likelihood of this successor being applied, when combined with other successors assigned to a given predecessor
     let odds: Int

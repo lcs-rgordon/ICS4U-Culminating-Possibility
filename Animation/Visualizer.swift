@@ -9,13 +9,18 @@ import Foundation
 import CanvasGraphics
 
 // NOTE: This is a completely empty sketch; it can be used as a template.
-struct Visualizer {
+struct Visualizer: Codable {
+    
+    // Identify what properties should be encoded
+    enum CodingKeys: CodingKey {
+        case system, length, reduction, angle, initialX, initialY, initialHeading
+    }
 
     // Canvas to draw on
-    let canvas: Canvas
+    var canvas: Canvas
     
     // Tortoise to draw with
-    let turtle: Tortoise
+    var turtle: Tortoise
     
     // MARK: L-system state
     var system: LindenmayerSystem
@@ -24,6 +29,9 @@ struct Visualizer {
     
     // The length of the line segments used when drawing the system, at generation 0
     var length: Double
+    
+    // The length of the line segments used when drawing the system, at the latest generation
+    var currentLength: Double
     
     // The factor by which to reduce the initial line segment length after each generation / word re-write
     let reduction: Double
@@ -60,6 +68,9 @@ struct Visualizer {
         // The length of the line segments used when drawing the system, at generation 0
         self.length = length
         
+        // The length of the line segments used when drawing the system, at the latest generation
+        self.currentLength = length
+        
         // The factor by which to reduce the initial line segment length after each generation / word re-write
         self.reduction = reduction
         
@@ -77,11 +88,72 @@ struct Visualizer {
         // Set the length based on number of generations
         if self.system.generations > 0 {
             for _ in 1...self.system.generations {
-                self.length /= self.reduction
+                self.currentLength /= self.reduction
             }
         }
     }
     
+    // Create an instance of this type by decoding from JSON
+    init(from decoder: Decoder) throws {
+        
+        // Use enumeration defined at top of structure to identify values to be decoded
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Decode each property
+        system = try container.decode(LindenmayerSystem.self, forKey: .system)
+        length = try container.decode(Double.self, forKey: .length)
+        currentLength = length
+        reduction = try container.decode(Double.self, forKey: .reduction)
+        angle = Degrees(try container.decode(Double.self, forKey: .angle))
+        let x = try container.decode(Int.self, forKey: .initialX)
+        let y = try container.decode(Int.self, forKey: .initialY)
+        initialPosition = Point(x: x, y: y)
+        initialHeading = Degrees(try container.decode(Double.self, forKey: .initialHeading))
+        
+        // Initialize a default canvas; this must be replaced by the actual canvas to draw upon
+        canvas = Canvas(width: 500, height: 500)
+        turtle = Tortoise(drawingUpon: canvas)
+        
+    }
+    
+    // Set the canvas that should be drawn upon
+    mutating func visualize(on canvas: Canvas) {
+        self.canvas = canvas
+        self.turtle = Tortoise(drawingUpon: self.canvas)
+    }
+    
+    // Encode an instance of this type to JSON
+    public func encode(to encoder: Encoder) throws {
+        
+        // Use the enumeration defined at top of structure to identify values to be encoded
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        // Encode each property
+        try container.encode(system, forKey: .system)
+        try container.encode(length, forKey: .length)
+        try container.encode(reduction, forKey: .reduction)
+        try container.encode(angle, forKey: .angle)
+        try container.encode(initialPosition.x, forKey: .initialX)
+        try container.encode(initialPosition.y, forKey: .initialY)
+        try container.encode(initialHeading, forKey: .initialHeading)
+        
+    }
+    
+    // Get the text of the JSON representation of this type
+    func printJSONRepresentation() {
+        
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let data = try encoder.encode(self)
+            print(String(data: data, encoding: .utf8)!)
+        } catch {
+            print("Unable to encode visualized Lindenmayer system to JSON.")
+        }
+        
+    }
+    
+    // Visualize the L-system on the canvas
     mutating func render() {
         
         // Regenerate the L-system so this instance is different (rules are re-applied based on random chance)
@@ -130,7 +202,7 @@ struct Visualizer {
                 canvas.drawEllipse(at: Point(x: 0, y: 0), width: 5, height: 5)
             default:
                 // Any other character means move forward
-                turtle.forward(steps: Int(round(length)))
+                turtle.forward(steps: Int(round(currentLength)))
                 break
                 
             }
@@ -141,5 +213,5 @@ struct Visualizer {
         }
         
     }
-    
+        
 }

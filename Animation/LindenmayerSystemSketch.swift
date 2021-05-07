@@ -33,14 +33,12 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
                                                     "F": [
                                                         Successor(odds: 1, text: "F[-F][+F]"),
                                                         Successor(odds: 1, text: "F[--F][+F]"),
-                                                        Successor(odds: 1, text: "F[-F][++F]"),
-                                                    ],
-                                                    "X": [
-                                                        Successor(odds: 1, text: "XX"),
+                                                        Successor(odds: 8, text: "F[-F][++F]"),
                                                     ],
                                                   ],
                                                   generations: 3)
-
+        
+        // Create four visualizations of this example
         for i in 0...3 {
 
             // Visualize the form
