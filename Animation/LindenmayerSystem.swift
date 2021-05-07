@@ -10,7 +10,7 @@ import Foundation
 // NOTE: This is a completely empty sketch; it can be used as a template.
 struct LindenmayerSystem: Codable {
     
-    // Identify what properties should be encoded
+    // Identify what properties should be encoded to JSON
     enum CodingKeys: CodingKey {
         case axiom, generations, rules
     }
@@ -29,7 +29,7 @@ struct LindenmayerSystem: Codable {
     // The rules the define how the word is re-written with each new generation
     let rules: [Predecessor: [Successor]]
     
-    // This function runs once
+    // Initializer to use when creating system directly from code
     init(axiom: String,
          rules: [Predecessor: [Successor]],
          generations: Int) {
@@ -46,6 +46,32 @@ struct LindenmayerSystem: Codable {
         
     }
     
+    // Create an instance of this type by decoding from JSON
+    init(from decoder: Decoder) throws {
+
+        // Use the enumeration defined at top of structure to identify values to be decoded
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Decode each property
+        axiom = try container.decode(String.self, forKey: .axiom)
+        generations = try container.decode(Int.self, forKey: .generations)
+        rules = try container.decode([Predecessor: [Successor]].self, forKey: .rules)
+        
+    }
+    
+    // Encode an instance of this type to JSON
+    public func encode(to encoder: Encoder) throws {
+        
+        // Use the enumeration defined at top of structure to identify values to be encoded
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        // Encode each property
+        try container.encode(axiom, forKey: .axiom)
+        try container.encode(generations, forKey: .generations)
+        try container.encode(rules, forKey: .rules)
+    }
+    
+    // Invoked to re-write the word, so that each instace of the same stochastic system looks different
     mutating func generate() {
         
         // Generation 0 – we begin with the word the same as the axiom
@@ -118,45 +144,5 @@ struct LindenmayerSystem: Codable {
         }
         
     }
-    
-    // Create an instance of this type by decoding from JSON
-    init(from decoder: Decoder) throws {
 
-        // Use the enumeration defined at top of structure to identify values to be decoded
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        // Decode each property
-        axiom = try container.decode(String.self, forKey: .axiom)
-        generations = try container.decode(Int.self, forKey: .generations)
-        rules = try container.decode([Predecessor: [Successor]].self, forKey: .rules)
-        
-    }
-    
-    // Encode an instance of this type to JSON
-    public func encode(to encoder: Encoder) throws {
-        
-        // Use the enumeration defined at top of structure to identify values to be encoded
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        // Encode each property
-        try container.encode(axiom, forKey: .axiom)
-        try container.encode(generations, forKey: .generations)
-        try container.encode(rules, forKey: .rules)
-    }
-    
-    // Get the text of the JSON representation of this type
-    func printJSONRepresentation() {
-        
-        do {
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            let data = try encoder.encode(self)
-            print(String(data: data, encoding: .utf8)!)
-        } catch {
-            print("Unable to encode Lindenmayer system to JSON.")
-        }
-        
-        
-    }
-    
 }

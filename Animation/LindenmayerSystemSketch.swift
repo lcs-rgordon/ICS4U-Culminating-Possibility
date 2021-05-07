@@ -21,9 +21,6 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // Create canvas object – specify size
         canvas = Canvas(width: 500, height: 500)
         
-        // Draw slowly
-        canvas.framesPerSecond = 15
-        
         // Enable faster rendering
         canvas.highPerformance = true
         
@@ -53,7 +50,7 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
                                   length: 30,
                                   reduction: 1.25,
                                   angle: 30,
-                                  initialPosition: Point(x: 100 + i * 100, y: 275),
+                                  initialPosition: Point(x: 100 + i * 100, y: 275 + Int.random(in: -15...15)),
                                   initialHeading: 90)
             
             // Actually render the plant
@@ -61,53 +58,23 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
             
         }
         
-        // Visualize Scott's berry tree
-        let berryTree = LindenmayerSystem(axiom: "[EEF][++EEF][--EEF]",
-                                          rules: [
-                                            "F": [
-                                                Successor(odds: 1, text: "G[--G][+GK]"),
-                                                Successor(odds: 3, text: "G[--G][+G]"),
-                                                Successor(odds: 3, text: "G[-G][++G]"),
-                                            ],
-                                            "G": [
-                                                Successor(odds: 3, text: "X[-H][+H]"),
-                                                Successor(odds: 1, text: "XX[--HK][+H]"),
-                                                Successor(odds: 3, text: "XH[-H][++H]"),
-                                            ],
-                                            "H": [
-                                                Successor(odds: 1, text: "XXI[-I][+IK]"),
-                                                Successor(odds: 3, text: "XXI[--I][+I]"),
-                                                Successor(odds: 3, text: "XXI[-IK][++I]"),
-                                            ],
-                                            "I": [
-                                                Successor(odds: 3, text: "XE[-J][+E]"),
-                                                Successor(odds: 3, text: "XJ[--E][+J]"),
-                                                Successor(odds: 3, text: "XJ[-E][++J]"),
-                                            ],
-                                            "J": [
-                                                Successor(odds: 3, text: "XXX[-XX][+X]"),
-                                                Successor(odds: 3, text: "XXXX[--XXK][+XX]"),
-                                                Successor(odds: 3, text: "XXXX[-XK][++X]"),
-                                            ],
-                                            "K": [
-                                                Successor(odds: 3, text: "B[EB++++++++EB++++++EB++++++EB+++++++++EB]")
-                                            ],
-                                          ],
-                                          generations: 6)
-        
-        // Visualize Scott's berry tree
-        var smallBerryTree = Visualizer(for: berryTree,
-                                        on: canvas,
-                                        length: 15,
-                                        reduction: 1.1,
-                                        angle: 15,
-                                        initialPosition: Point(x: 325, y: 25),
-                                        initialHeading: 90)
-        
+        // Load Scott's berry tree from it's JSON representation
+        var largeBerryTree = Visualizer(fromJSONFile: "scott-berry-tree",
+                                        drawingOn: self.canvas)
+
         // Render Scott's berry tree
+        largeBerryTree.render()
+        
+        // Make a smaller berry tree in the background
+        // Since Visualizer is a struct, this is a copy, not a reference
+        var smallBerryTree = largeBerryTree
+        smallBerryTree.initialPosition = Point(x: 100, y: 125)
+        smallBerryTree.length = 12
+        smallBerryTree.reduction = 1.15
+        
+        // Render Scott's small berry tree
         smallBerryTree.render()
-        
-        
+
     }
     
     // This function runs repeatedly, forever, to create the animated effect

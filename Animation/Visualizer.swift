@@ -11,16 +11,16 @@ import CanvasGraphics
 // NOTE: This is a completely empty sketch; it can be used as a template.
 struct Visualizer: Codable {
     
-    // Identify what properties should be encoded
+    // Identify what properties should be encoded to JSON
     enum CodingKeys: CodingKey {
         case system, length, reduction, angle, initialX, initialY, initialHeading
     }
-
+    
     // Canvas to draw on
-    var canvas: Canvas
+    var canvas: Canvas?
     
     // Tortoise to draw with
-    var turtle: Tortoise
+    var turtle: Tortoise?
     
     // MARK: L-system state
     var system: LindenmayerSystem
@@ -34,26 +34,26 @@ struct Visualizer: Codable {
     var currentLength: Double
     
     // The factor by which to reduce the initial line segment length after each generation / word re-write
-    let reduction: Double
+    var reduction: Double
     
     // The angle by which the turtle will turn left or right; in degrees.
-    let angle: Degrees
+    var angle: Degrees
     
     // Where the turtle begins drawing on the canvas
-    let initialPosition: Point
+    var initialPosition: Point
     
     // The initial direction of the turtle
-    let initialHeading: Degrees
+    var initialHeading: Degrees
     
-    // This function runs once
+    // Initializer to use when creating a visualization directly from code
     init(for system: LindenmayerSystem,
-                  on canvas: Canvas,
-                  length: Double,
-                  reduction: Double,
-                  angle: Degrees,
-                  initialPosition: Point,
-                  initialHeading: Degrees) {
-                
+         on canvas: Canvas,
+         length: Double,
+         reduction: Double,
+         angle: Degrees,
+         initialPosition: Point,
+         initialHeading: Degrees) {
+        
         // Set the canvas we will draw on
         self.canvas = canvas
         
@@ -83,14 +83,6 @@ struct Visualizer: Codable {
         // The initial direction of the turtle
         self.initialHeading = initialHeading
         
-        // MARK: Prepare for rendering L-system
-        
-        // Set the length based on number of generations
-        if self.system.generations > 0 {
-            for _ in 1...self.system.generations {
-                self.currentLength /= self.reduction
-            }
-        }
     }
     
     // Create an instance of this type by decoding from JSON
@@ -109,19 +101,27 @@ struct Visualizer: Codable {
         let y = try container.decode(Int.self, forKey: .initialY)
         initialPosition = Point(x: x, y: y)
         initialHeading = Degrees(try container.decode(Double.self, forKey: .initialHeading))
-        
-        // Initialize a default canvas; this must be replaced by the actual canvas to draw upon
-        canvas = Canvas(width: 500, height: 500)
-        turtle = Tortoise(drawingUpon: canvas)
-        
+                
     }
     
-    // Set the canvas that should be drawn upon
-    mutating func visualize(on canvas: Canvas) {
+    // Create an instance of this type, loaded from a specific file
+    init(fromJSONFile fileName: String, drawingOn canvas: Canvas) {
+        
+        // Get a pointer to the file
+        let url = Bundle.main.url(forResource: fileName, withExtension: "json")!
+        
+        // Load the contents of the JSON file
+        let data = try! Data(contentsOf: url)
+        
+        // Convert the data from the JSON file into an instance of this type
+        self = try! JSONDecoder().decode(Visualizer.self, from: data)
+
+        // Set the canvas that should be drawn upon
         self.canvas = canvas
-        self.turtle = Tortoise(drawingUpon: self.canvas)
+        self.turtle = Tortoise(drawingUpon: canvas)
+
     }
-    
+        
     // Encode an instance of this type to JSON
     public func encode(to encoder: Encoder) throws {
         
@@ -159,13 +159,22 @@ struct Visualizer: Codable {
         // Regenerate the L-system so this instance is different (rules are re-applied based on random chance)
         system.generate()
         
+        // MARK: Prepare for rendering L-system
+        self.currentLength = self.length
+        // Set the length based on number of generations
+        if self.system.generations > 0 {
+            for _ in 1...self.system.generations {
+                self.currentLength /= self.reduction
+            }
+        }
+
         // Move to designated starting position
-        canvas.saveState()
-        turtle.penUp()
-        turtle.setPosition(to: initialPosition)
-        turtle.setHeading(to: initialHeading)
-        turtle.penDown()
-        canvas.restoreState()
+        canvas?.saveState()
+        turtle?.penUp()
+        turtle?.setPosition(to: initialPosition)
+        turtle?.setHeading(to: initialHeading)
+        turtle?.penDown()
+        canvas?.restoreState()
         
         // DEBUG:
         print("Now rendering...\n")
@@ -174,11 +183,11 @@ struct Visualizer: Codable {
         for character in system.word {
             
             // Save the state of the canvas (no transformations)
-            canvas.saveState()
+            canvas?.saveState()
             
             // Bring canvas into same orientation and origin position as
             // it was when last character in the word was rendered
-            turtle.restoreStateOnCanvas()
+            turtle?.restoreStateOnCanvas()
             
             // Render based on this character
             switch character {
@@ -187,31 +196,31 @@ struct Visualizer: Codable {
                 break
             case "+":
                 // Turn to the left
-                turtle.left(by: angle)
+                turtle?.left(by: angle)
             case "-":
                 // Turn to the right
-                turtle.right(by: angle)
+                turtle?.right(by: angle)
             case "[":
                 // Save position and heading
-                turtle.saveState()
+                turtle?.saveState()
             case "]":
                 // Restore position and heading
-                turtle.restoreState()
+                turtle?.restoreState()
             case "B":
                 // Render a small berry
-                canvas.drawEllipse(at: Point(x: 0, y: 0), width: 5, height: 5)
+                canvas?.drawEllipse(at: Point(x: 0, y: 0), width: 5, height: 5)
             default:
                 // Any other character means move forward
-                turtle.forward(steps: Int(round(currentLength)))
+                turtle?.forward(steps: Int(round(currentLength)))
                 break
                 
             }
             
             // Restore the state of the canvas (no transformations)
-            canvas.restoreState()
+            canvas?.restoreState()
             
         }
         
     }
-        
+    
 }
