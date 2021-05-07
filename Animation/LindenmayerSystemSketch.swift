@@ -24,38 +24,25 @@ class LindenmayerSystemSketch: NSObject, Sketchable {
         // Enable faster rendering
         canvas.highPerformance = true
         
-        // Create a grey rectangle that creates apperance of a horizon
+        // Create a grey rectangle that creates apperance of a ground and horizon
         canvas.drawShapesWithBorders = false
         canvas.fillColor = Color(hue: 0, saturation: 0, brightness: 45, alpha: 100)
         canvas.drawRectangle(at: Point(x: 0, y: 0), width: canvas.width, height: canvas.height / 3 * 2)
         canvas.fillColor = .black
         
-        // Create a basic branching form
-        let stochasticExample = LindenmayerSystem(axiom: "AAAAF",
-                                                  rules: [
-                                                    "F": [
-                                                        Successor(odds: 1, text: "F[-F][+F]"),
-                                                        Successor(odds: 1, text: "F[--F][+F]"),
-                                                        Successor(odds: 8, text: "F[-F][++F]"),
-                                                    ],
-                                                  ],
-                                                  generations: 3)
-        
-        // Create four visualizations of this example
+        // Create four visualizations of a basic branching tree
         for i in 0...3 {
             
             // Visualize the form
-            var form = Visualizer(for: stochasticExample,
-                                  on: canvas,
-                                  length: 30,
-                                  reduction: 1.25,
-                                  angle: 30,
-                                  initialPosition: Point(x: 100 + i * 100, y: 275 + Int.random(in: -15...15)),
-                                  initialHeading: 90)
+            var form = Visualizer(fromJSONFile: "gordon-basic-branching-tree",
+                                  drawingOn: self.canvas)
             
-            // Actually render the plant
+            // Adjust the starting position of this tree a bit
+            form.initialPosition = Point(x: 100 + i * 100, y: 275 + Int.random(in: -15...15))
+
+            // Actually render the tree
             form.render()
-            
+                        
         }
         
         // Load Scott's berry tree from it's JSON representation
