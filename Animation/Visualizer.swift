@@ -13,7 +13,7 @@ struct Visualizer: Codable {
     
     // Identify what properties should be encoded to JSON
     enum CodingKeys: CodingKey {
-        case system, length, reduction, angle, initialX, initialY, initialHeading
+        case system, length, reduction, angle, initialX, initialY, initialHeading, colors
     }
     
     // Canvas to draw on
@@ -45,6 +45,9 @@ struct Visualizer: Codable {
     // The initial direction of the turtle
     var initialHeading: Degrees
     
+    // The colors for this L-system
+    var colors: [String: LSColor]
+    
     // Initializer to use when creating a visualization directly from code
     init(for system: LindenmayerSystem,
          on canvas: Canvas,
@@ -52,7 +55,19 @@ struct Visualizer: Codable {
          reduction: Double,
          angle: Degrees,
          initialPosition: Point,
-         initialHeading: Degrees) {
+         initialHeading: Degrees,
+         colors: [String: LSColor] = [
+            "0": LSColor.black,
+            "1": LSColor.black,
+            "2": LSColor.black,
+            "3": LSColor.black,
+            "4": LSColor.black,
+            "5": LSColor.black,
+            "6": LSColor.black,
+            "7": LSColor.black,
+            "8": LSColor.black,
+            "9": LSColor.black,
+         ]) {
         
         // Set the canvas we will draw on
         self.canvas = canvas
@@ -83,6 +98,8 @@ struct Visualizer: Codable {
         // The initial direction of the turtle
         self.initialHeading = initialHeading
         
+        // The colors for this L-system
+        self.colors = colors
     }
     
     // Create an instance of this type by decoding from JSON
@@ -101,7 +118,24 @@ struct Visualizer: Codable {
         let y = try container.decode(Int.self, forKey: .initialY)
         initialPosition = Point(x: x, y: y)
         initialHeading = Degrees(try container.decode(Double.self, forKey: .initialHeading))
-                
+        do {
+            try colors = container.decode([String: LSColor].self, forKey: .colors)
+        } catch DecodingError.keyNotFound {
+            print("key wasn't found for color")
+            colors = [
+                "0": LSColor.black,
+                "1": LSColor.black,
+                "2": LSColor.black,
+                "3": LSColor.black,
+                "4": LSColor.black,
+                "5": LSColor.black,
+                "6": LSColor.black,
+                "7": LSColor.black,
+                "8": LSColor.black,
+                "9": LSColor.black,
+             ]
+        }
+
     }
     
     // Create an instance of this type, loaded from a specific file
@@ -136,7 +170,8 @@ struct Visualizer: Codable {
         try container.encode(initialPosition.x, forKey: .initialX)
         try container.encode(initialPosition.y, forKey: .initialY)
         try container.encode(initialHeading, forKey: .initialHeading)
-        
+        try container.encode(colors, forKey: .colors)
+
     }
     
     // Get the text of the JSON representation of this type
@@ -191,9 +226,36 @@ struct Visualizer: Codable {
             
             // Render based on this character
             switch character {
-            case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
+            case "0":
                 // Placeholder for changing colour
-                break
+                turtle?.setPenColor(to: colors["0"]?.expectedColor() ?? Color.black)
+            case "1":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["1"]?.expectedColor() ?? Color.black)
+            case "2":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["2"]?.expectedColor() ?? Color.black)
+            case "3":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["3"]?.expectedColor() ?? Color.black)
+            case "4":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["4"]?.expectedColor() ?? Color.black)
+            case "5":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["5"]?.expectedColor() ?? Color.black)
+            case "6":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["6"]?.expectedColor() ?? Color.black)
+            case "7":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["7"]?.expectedColor() ?? Color.black)
+            case "8":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["8"]?.expectedColor() ?? Color.black)
+            case "9":
+                // Placeholder for changing colour
+                turtle?.setPenColor(to: colors["9"]?.expectedColor() ?? Color.black)
             case "+":
                 // Turn to the left
                 turtle?.left(by: angle)
@@ -206,13 +268,6 @@ struct Visualizer: Codable {
             case "]":
                 // Restore position and heading
                 turtle?.restoreState()
-            case "{":
-                // Save position and heading
-                turtle?.setFillColor(to: .green)
-                turtle?.beginFill()
-            case "}":
-                // Restore position and heading
-                turtle?.endFill()
             case "B":
                 // Render a small berry
                 canvas?.drawEllipse(at: Point(x: 0, y: 0), width: 5, height: 5)

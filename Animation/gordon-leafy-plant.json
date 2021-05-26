@@ -1,54 +1,54 @@
 {
   "system" : {
-    "axiom" : "XXXHHHH",
+    "axiom" : "4XXXHHHH",
     "rules" : {
       "H" : [
         {
-          "text" : "FIH[+++++FI]",
+          "text" : "4FIH[+++++FI]",
           "odds" : 3
         },
         {
-          "text" : "++FIH[+++++FI]",
+          "text" : "++4FIH[+++++FI]",
           "odds" : 3
         },
         {
-          "text" : "+FIH[+++++FI]",
+          "text" : "+4FIH[+++++FI]",
           "odds" : 3
         },
         {
-          "text" : "--FIH[+++++FI]",
+          "text" : "--4FIH[+++++FI]",
           "odds" : 3
         },
         {
-          "text" : "-FIH[+++++FI]",
+          "text" : "-4FIH[+++++FI]",
           "odds" : 3
         },
         {
-          "text" : "FIH[+++++FI][-------FI]",
+          "text" : "4FIH[+++++FI][-------FI]",
           "odds" : 3
         },
         {
-          "text" : "FIH[++++FI][-----FI]",
+          "text" : "4FIH[++++FI][-----FI]",
           "odds" : 3
         },
         {
-          "text" : "FIH[------FI]",
+          "text" : "4FIH[------FI]",
           "odds" : 3
         },
         {
-          "text" : "FIH[------FI][+++++++FI]",
+          "text" : "4FIH[------FI][+++++++FI]",
           "odds" : 3
         },
         {
-          "text" : "FIH[--------FI][++++++FI]",
+          "text" : "4FIH[--------FI][++++++FI]",
           "odds" : 3
         },
         {
-          "text" : "FIF[++++FIF]",
+          "text" : "4FIF[++++FIF]",
           "odds" : 1
         },
         {
-          "text" : "FIF[------FIF]",
+          "text" : "4FIF[------FIF]",
           "odds" : 1
         }
       ],
@@ -60,7 +60,7 @@
       ],
       "I" : [
         {
-          "text" : "FFF",
+          "text" : "4FFF",
           "odds" : 1
         },
         {
@@ -74,11 +74,11 @@
       ],
       "L" : [
         {
-          "text" : "---[++++++F--F--F--F--F--F--F][+++++F--F--F--F--F--F][++++F--F--F--F--F][fFFF][----F++F++F++F++F][-----F++F++F++F++F++F][------F++F++F++F++F++F++F]",
+          "text" : "---0[++++++F--F--F--F--F--F--F]1[+++++F--F--F--F--F--F]2[++++F--F--F--F--F]3[fFFF]2[----F++F++F++F++F]1[-----F++F++F++F++F++F]0[------F++F++F++F++F++F++F]",
           "odds" : 1
         },
         {
-          "text" : "+++[++++++F--F--F--F--F--F--F][+++++F--F--F--F--F--F][++++F--F--F--F--F][fFFF][----F++F++F++F++F][-----F++F++F++F++F++F][------F++F++F++F++F++F++F]",
+          "text" : "+++0[++++++F--F--F--F--F--F--F]1[+++++F--F--F--F--F--F]2[++++F--F--F--F--F]3[fFFF]2[----F++F++F++F++F]1[-----F++F++F++F++F++F]0[------F++F++F++F++F++F++F]",
           "odds" : 1
         }
       ],
@@ -98,6 +98,32 @@
   "length" : 180,
   "angle" : 5,
   "initialX" : 100,
+  "colors" : {
+    "3" : {
+      "hue" : 113,
+      "saturation" : 100,
+      "brightness" : 70,
+      "alpha" : 100
+    },
+    "1" : {
+      "hue" : 113,
+      "saturation" : 100,
+      "brightness" : 50,
+      "alpha" : 100
+    },
+    "2" : {
+      "hue" : 113,
+      "saturation" : 100,
+      "brightness" : 60,
+      "alpha" : 100
+    },
+    "0" : {
+      "hue" : 113,
+      "saturation" : 100,
+      "brightness" : 40,
+      "alpha" : 100
+    }
+  },
   "initialHeading" : 90,
   "reduction" : 3,
   "initialY" : 100
