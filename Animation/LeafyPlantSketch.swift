@@ -17,51 +17,20 @@ class LeafyPlantSketch: NSObject, Sketchable {
         // Enable faster rendering
         canvas.highPerformance = true
         
-        // Create the basic L-system
-        var leafyPlantSystem = LindenmayerSystem(axiom: "XXXHHHH",
-                                                 rules: [
-                                                    "X": [
-                                                        Successor(odds: 1, text: "X"),
-                                                        Successor(odds: 1, text: "XX"),
-                                                    ],
-                                                    "F": [Successor(odds: 1, text: "FF")],
-                                                    "H": [
-                                                        Successor(odds: 3, text: "FIH[+++++FI]"),
-                                                        Successor(odds: 3, text: "++FIH[+++++FI]"),
-                                                        Successor(odds: 3, text: "+FIH[+++++FI]"),
-                                                        Successor(odds: 3, text: "--FIH[+++++FI]"),
-                                                        Successor(odds: 3, text: "-FIH[+++++FI]"),
-                                                        Successor(odds: 3, text: "FIH[+++++FI][-------FI]"),
-                                                        Successor(odds: 3, text: "FIH[++++FI][-----FI]"),
-                                                        Successor(odds: 3, text: "FIH[------FI]"),
-                                                        Successor(odds: 3, text: "FIH[------FI][+++++++FI]"),
-                                                        Successor(odds: 3, text: "FIH[--------FI][++++++FI]"),
-                                                        Successor(odds: 1, text: "FIF[++++FIF]"),
-                                                        Successor(odds: 1, text: "FIF[------FIF]"),
-                                                    ],
-                                                    "I": [
-                                                        Successor(odds: 1, text: "FFF"),
-                                                        Successor(odds: 8, text: "[++++++FL]"),
-                                                        Successor(odds: 8, text: "[------FL]"),
-                                                    ],
-                                                    "L": [
-                                                        Successor(odds: 1, text: "---[++++++F--F--F--F--F--F--F][fFFF][------F++F++F++F++F++F++F]"),
-                                                        Successor(odds: 1, text: "+++[++++++F--F--F--F--F--F--F][fFFF][------F++F++F++F++F++F++F]")
-                                                    ],
-                                                 ],
-                                                 generations: 4)
-        
         // Visualize the system
-        var visualizedLeafyPlant = Visualizer(for: leafyPlantSystem,
-                                              on: canvas,
-                                              length: 180,
-                                              reduction: 3,
-                                              angle: 5,
-                                              initialPosition: Point(x: 100, y: 100),
-                                              initialHeading: 90)
+        var visualizedLeafyPlant = Visualizer(fromJSONFile: "gordon-leafy-plant", drawingOn: canvas)
         
-        // Render the system
-        visualizedLeafyPlant.render()
+        // Render several versions of this system
+        for x in stride(from: 50, through: 450, by: 100) {
+            
+            // Randomize the start position a bit
+            visualizedLeafyPlant.initialPosition = Point(x: x + Int.random(in: -10...10), y: 100 + Int.random(in: -20...20))
+            
+            // Render the system
+            visualizedLeafyPlant.render()
+
+        }
+                
         
     }
     
