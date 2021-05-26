@@ -209,6 +209,11 @@ struct Visualizer: Codable {
             case "B":
                 // Render a small berry
                 canvas?.drawEllipse(at: Point(x: 0, y: 0), width: 5, height: 5)
+            case "a", "b", "c", "d", "e", "f":
+                // Move the turtle forward without drawing a line
+                turtle?.penUp()
+                turtle?.forward(steps: Int(round(currentLength)))
+                turtle?.penDown()
             default:
                 // Any other character means move forward
                 turtle?.forward(steps: Int(round(currentLength)))
