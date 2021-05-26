@@ -24,6 +24,7 @@
 		817485E02642EDDC006DE482 /* Predecessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485DF2642EDDC006DE482 /* Predecessor.swift */; };
 		817485E52642EE50006DE482 /* LindenmayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485E42642EE50006DE482 /* LindenmayerSystem.swift */; };
 		817485E82642EFC6006DE482 /* Visualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485E72642EFC6006DE482 /* Visualizer.swift */; };
+		81827CA2265E9B5E00041784 /* PerlinNoiseSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81827CA1265E9B5E00041784 /* PerlinNoiseSketch.swift */; };
 		818878412199C645008CB375 /* CanvasGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8188783A2199C645008CB375 /* CanvasGraphics.framework */; };
 		818878422199C645008CB375 /* CanvasGraphics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8188783A2199C645008CB375 /* CanvasGraphics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		818878532199C7EA008CB375 /* PerlinGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818878502199C7EA008CB375 /* PerlinGenerator.swift */; };
@@ -83,6 +84,7 @@
 		817485DF2642EDDC006DE482 /* Predecessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predecessor.swift; sourceTree = "<group>"; };
 		817485E42642EE50006DE482 /* LindenmayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LindenmayerSystem.swift; sourceTree = "<group>"; };
 		817485E72642EFC6006DE482 /* Visualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visualizer.swift; sourceTree = "<group>"; };
+		81827CA1265E9B5E00041784 /* PerlinNoiseSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerlinNoiseSketch.swift; sourceTree = "<group>"; };
 		8188783A2199C645008CB375 /* CanvasGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CanvasGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		818878492199C720008CB375 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		8188784E2199C7DF008CB375 /* CanvasLiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasLiveViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				817485E42642EE50006DE482 /* LindenmayerSystem.swift */,
 				817485E72642EFC6006DE482 /* Visualizer.swift */,
 				81A7E5AC26458D9A00974F24 /* SystemCatalog */,
+				81827CA1265E9B5E00041784 /* PerlinNoiseSketch.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				814ADAFB248EB45F00F80486 /* AudioInputSketch.swift in Sources */,
 				814ADAF1248E9F8200F80486 /* AudioAnalyser.swift in Sources */,
 				814ADAF3248E9FDA00F80486 /* Sketchable.swift in Sources */,
+				81827CA2265E9B5E00041784 /* PerlinNoiseSketch.swift in Sources */,
 				814ADAFD248EB56900F80486 /* EmptySketch.swift in Sources */,
 				814ADAFF248EB5E300F80486 /* StaticSketch.swift in Sources */,
 				817485E02642EDDC006DE482 /* Predecessor.swift in Sources */,

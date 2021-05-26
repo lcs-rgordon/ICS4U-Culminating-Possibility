@@ -1,10 +1,3 @@
-//
-//  LindemayerSystemSketch.swift
-//  Animation
-//
-//  Created by Russell Gordon on 2021-05-04.
-//
-
 import Foundation
 import CanvasGraphics
 
