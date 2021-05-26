@@ -35,6 +35,7 @@
 		81A9FADB219A151B003E6502 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A9FADA219A151B003E6502 /* Helpers.swift */; };
 		81A9FADD219A156E003E6502 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A9FADC219A156E003E6502 /* Color.swift */; };
 		81C150F926459E1F009D5AC6 /* gordon-basic-branching-tree.json in Resources */ = {isa = PBXBuildFile; fileRef = 81C150F726459CFC009D5AC6 /* gordon-basic-branching-tree.json */; };
+		81CDA828265E9C3800E2E9BB /* TriangleSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CDA827265E9C3800E2E9BB /* TriangleSketch.swift */; };
 		81F935042476B0E000CD75D8 /* Tortoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F935032476B0E000CD75D8 /* Tortoise.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,7 @@
 		81A9FADA219A151B003E6502 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		81A9FADC219A156E003E6502 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		81C150F726459CFC009D5AC6 /* gordon-basic-branching-tree.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "gordon-basic-branching-tree.json"; sourceTree = "<group>"; };
+		81CDA827265E9C3800E2E9BB /* TriangleSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleSketch.swift; sourceTree = "<group>"; };
 		81DBFBF722E96442005EDE85 /* Enums.html */ = {isa = PBXFileReference; lastKnownFileType = text.html.documentation; path = Enums.html; sourceTree = "<group>"; };
 		81DBFBF822E96442005EDE85 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html.documentation; path = index.html; sourceTree = "<group>"; };
 		81DBFBF922E96442005EDE85 /* Functions.html */ = {isa = PBXFileReference; lastKnownFileType = text.html.documentation; path = Functions.html; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				817485E72642EFC6006DE482 /* Visualizer.swift */,
 				81A7E5AC26458D9A00974F24 /* SystemCatalog */,
 				81827CA1265E9B5E00041784 /* PerlinNoiseSketch.swift */,
+				81CDA827265E9C3800E2E9BB /* TriangleSketch.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				817485E52642EE50006DE482 /* LindenmayerSystem.swift in Sources */,
 				814ADAF5248EAB6A00F80486 /* TurtleSketch.swift in Sources */,
 				814ADAF9248EB34900F80486 /* BasicSketch.swift in Sources */,
+				81CDA828265E9C3800E2E9BB /* TriangleSketch.swift in Sources */,
 				817485E82642EFC6006DE482 /* Visualizer.swift in Sources */,
 				814ADAFB248EB45F00F80486 /* AudioInputSketch.swift in Sources */,
 				814ADAF1248E9F8200F80486 /* AudioAnalyser.swift in Sources */,
