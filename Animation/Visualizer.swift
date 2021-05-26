@@ -206,6 +206,13 @@ struct Visualizer: Codable {
             case "]":
                 // Restore position and heading
                 turtle?.restoreState()
+            case "{":
+                // Save position and heading
+                turtle?.setFillColor(to: .green)
+                turtle?.beginFill()
+            case "}":
+                // Restore position and heading
+                turtle?.endFill()
             case "B":
                 // Render a small berry
                 canvas?.drawEllipse(at: Point(x: 0, y: 0), width: 5, height: 5)

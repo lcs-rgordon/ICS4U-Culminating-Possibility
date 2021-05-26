@@ -8,7 +8,7 @@ class Sketch: NSObject {
     //       the Sketchable protocol.
     //
     //       Therefore, the line immediately below, or one like it, must always be present.
-    var currentDrawing =  LeafyPlantSketch()
+    //var currentDrawing =  LeafSketch()
 
     // To try out other included sketches:
     // 1. Comment out the code on line 11.
@@ -20,6 +20,6 @@ class Sketch: NSObject {
 //    var currentDrawing =  PerlinNoiseSketch()
 //    var currentDrawing =  TriangleSketch()
 //    var currentDrawing =  LeafSketch()
-//    var currentDrawing =  LeafyPlantSketch()
+    var currentDrawing =  LeafyPlantSketch()
 
 }

@@ -20,6 +20,10 @@ class LeafyPlantSketch: NSObject, Sketchable {
         // Create the basic L-system
         var leafyPlantSystem = LindenmayerSystem(axiom: "XXXHHHH",
                                                  rules: [
+                                                    "X": [
+                                                        Successor(odds: 1, text: "X"),
+                                                        Successor(odds: 1, text: "XX"),
+                                                    ],
                                                     "F": [Successor(odds: 1, text: "FF")],
                                                     "H": [
                                                         Successor(odds: 3, text: "FIH[+++++FI]"),
