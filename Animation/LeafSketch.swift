@@ -20,7 +20,7 @@ class LeafSketch: NSObject, Sketchable {
         // Create the basic L-system
         var leafSystem = LindenmayerSystem(axiom: "L",
                                                rules: [
-                                                "L": [Successor(odds: 1, text: "[++++++F--F--F--F--F--F--F][fFFF][------F++F++F++F++F++F++F]")],
+                                                "L": [Successor(odds: 1, text: "[++++++F--F--F--F--F--F--F][+++++F--F--F--F--F--F][++++F--F--F--F--F][fFFF][----F++F++F++F++F][-----F++F++F++F++F++F][------F++F++F++F++F++F++F]")],
                                                ],
                                                generations: 1)
         
