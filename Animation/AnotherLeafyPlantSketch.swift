@@ -29,26 +29,18 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                 Successor(odds: 1, text: """
                                                                             3[FF]
                                                                             4[+++++++++++++FHFFL]
+                                                                            5[FF-------------FHFFL]
+                                                                            """),
+                                                Successor(odds: 1, text: """
+                                                                            3[FF]
+                                                                            4[FF+++++++++++++FHFFL]
                                                                             5[-------------FHFFL]
                                                                             """),
-//                                                Successor(odds: 1, text: """
-//                                                                            3[FF]
-//                                                                            4[FF+++++++++++++FHFFL]
-//                                                                            5[-------------FHFFL]
-//                                                                            """),
                                             ],
                                             "H" : [
                                                 Successor(odds: 1, text: """
                                                                             4[+++++++++XFL]
                                                                             5[---------XFL]
-                                                                            """),
-                                                Successor(odds: 1, text: """
-                                                                            4[+++++++XFL]
-                                                                            5[---------XFL]
-                                                                            """),
-                                                Successor(odds: 1, text: """
-                                                                            4[+++++++++XFL]
-                                                                            5[-------XFL]
                                                                             """),
                                             ],
                                             "L": [
