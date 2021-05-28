@@ -20,7 +20,11 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
         var leafyPlant = LindenmayerSystem(axiom: "S",
                                            rules: [
                                             "S" : [
-                                                Successor(odds: 1, text: "0T1G2L"),
+                                                Successor(odds: 1, text: """
+                                                                            0T
+                                                                            1FFFFG
+                                                                            2L
+                                                                            """),
                                             ],
                                             "T" : [
                                                 Successor(odds: 1, text: """
