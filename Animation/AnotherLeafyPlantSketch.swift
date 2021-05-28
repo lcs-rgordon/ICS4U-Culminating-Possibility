@@ -28,6 +28,12 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                             "G" : [
                                                 Successor(odds: 1, text: """
                                                                             3[FF]
+                                                                            4[+++++++++++++FHL]
+                                                                            5[-------------FHL]
+                                                                            """),
+                                            ],
+                                            "H" : [
+                                                Successor(odds: 1, text: """
                                                                             4[+++++++++FL]
                                                                             5[---------FL]
                                                                             """),
@@ -50,13 +56,13 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                             ],
                                             "L": [
                                                 Successor(odds: 1, text: """
-                                                                            0[++++++F--F--F--F--F--F--F]
-                                                                            1[+++++F--F--F--F--F--F]
-                                                                            2[++++F--F--F--F--F]
-                                                                            3[fFFF]
-                                                                            2[----F++F++F++F++F]
-                                                                            1[-----F++F++F++F++F++F]
-                                                                            0[------F++F++F++F++F++F++F]
+                                                                            [++++++F--F--F--F--F--F--F]
+                                                                            [+++++F--F--F--F--F--F]
+                                                                            [++++F--F--F--F--F]
+                                                                            [fFFF]
+                                                                            [----F++F++F++F++F]
+                                                                            [-----F++F++F++F++F++F]
+                                                                            [------F++F++F++F++F++F++F]
                                                                             """),
                                             ],
                                            ],
