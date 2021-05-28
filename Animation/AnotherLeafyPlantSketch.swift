@@ -21,15 +21,7 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                            rules: [
                                             "S" : [
                                                 Successor(odds: 1, text: """
-                                                                            1FFFFFFFFFFFFFFFFG
-                                                                            2FFFFFFFFL
-                                                                            """),
-                                                Successor(odds: 1, text: """
-                                                                            1FFFFFFFFFFFFFG
-                                                                            2FFFFFFFFL
-                                                                            """),
-                                                Successor(odds: 1, text: """
-                                                                            1FFFFFFFFFFFFFFFG
+                                                                            1FFFFG
                                                                             2FFFFFFFFL
                                                                             """),
                                             ],
@@ -37,18 +29,18 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                 Successor(odds: 1, text: """
                                                                             3[FF]
                                                                             4[+++++++++++++FHFFL]
-                                                                            5[FF-------------FHFFL]
-                                                                            """),
-                                                Successor(odds: 1, text: """
-                                                                            3[FF]
-                                                                            4[FF+++++++++++++FHFFL]
                                                                             5[-------------FHFFL]
                                                                             """),
+//                                                Successor(odds: 1, text: """
+//                                                                            3[FF]
+//                                                                            4[FF+++++++++++++FHFFL]
+//                                                                            5[-------------FHFFL]
+//                                                                            """),
                                             ],
                                             "H" : [
                                                 Successor(odds: 1, text: """
-                                                                            4[+++++++++FL]
-                                                                            5[---------FL]
+                                                                            4[+++++++++XFL]
+                                                                            5[---------XFL]
                                                                             """),
                                                 Successor(odds: 1, text: """
                                                                             4[+++++++XFL]
@@ -59,22 +51,15 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                                             5[-------XFL]
                                                                             """),
                                             ],
-                                            "Y" : [
-                                                Successor(odds: 1, text: "YY"),
-                                                Successor(odds: 1, text: "Z"),
-                                            ],
-                                            "Z" : [
-                                                Successor(odds: 1, text: "WW"),
-                                            ],
                                             "L": [
                                                 Successor(odds: 1, text: """
-                                                                            [++++++Y--Y--Y--Y--Y--Y--Y]
-                                                                            [+++++Y--Y--Y--Y--Y--Y]
-                                                                            [++++Y--Y--Y--Y--Y]
-                                                                            [fYYY]
-                                                                            [----Y++Y++Y++Y++Y]
-                                                                            [-----Y++Y++Y++Y++Y++Y]
-                                                                            [------Y++Y++Y++Y++Y++Y++Y]
+                                                                            [++++++F--F--F--F--F--F--F]
+                                                                            [+++++F--F--F--F--F--F]
+                                                                            [++++F--F--F--F--F]
+                                                                            [fFFF]
+                                                                            [----F++F++F++F++F]
+                                                                            [-----F++F++F++F++F++F]
+                                                                            [------F++F++F++F++F++F++F]
                                                                             """),
                                             ],
                                            ],
