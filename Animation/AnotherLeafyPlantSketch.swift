@@ -26,6 +26,13 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                                             2L
                                                                             """),
                                             ],
+                                            "G" : [
+                                                Successor(odds: 1, text: """
+                                                                            3[FF]
+                                                                            4[+FL]
+                                                                            5[-FL]
+                                                                            """),
+                                            ],
                                             "T" : [
                                                 Successor(odds: 1, text: """
                                                                             F++++++
@@ -54,7 +61,7 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                                             """),
                                             ],
                                            ],
-                                           generations: 2)
+                                           generations: 3)
         
         // Define the visualization
         var visualizedLeafyPlant = Visualizer(for: leafyPlant,
@@ -68,6 +75,9 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                 "0" : LSColor.black,
                                                 "1" : LSColor.green,
                                                 "2" : LSColor.orange,
+                                                "3" : LSColor.purple,
+                                                "4" : LSColor.red,
+                                                "5" : LSColor.yellow,
                                               ])
         
         // Render the system
