@@ -20,6 +20,9 @@
 		814ADAFB248EB45F00F80486 /* AudioInputSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814ADAFA248EB45F00F80486 /* AudioInputSketch.swift */; };
 		814ADAFD248EB56900F80486 /* EmptySketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814ADAFC248EB56900F80486 /* EmptySketch.swift */; };
 		814ADAFF248EB5E300F80486 /* StaticSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814ADAFE248EB5E300F80486 /* StaticSketch.swift */; };
+		81537A45265FCE0400A50C54 /* ilana-fern-plant.json in Resources */ = {isa = PBXBuildFile; fileRef = 81537A44265FCE0400A50C54 /* ilana-fern-plant.json */; };
+		81537A47265FCE4000A50C54 /* TemporarySceneSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81537A46265FCE4000A50C54 /* TemporarySceneSketch.swift */; };
+		81537A49265FD23B00A50C54 /* gordon-triangle-sketch.json in Resources */ = {isa = PBXBuildFile; fileRef = 81537A48265FD23B00A50C54 /* gordon-triangle-sketch.json */; };
 		817485DD2642EDA3006DE482 /* Successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485DC2642EDA3006DE482 /* Successor.swift */; };
 		817485E02642EDDC006DE482 /* Predecessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485DF2642EDDC006DE482 /* Predecessor.swift */; };
 		817485E52642EE50006DE482 /* LindenmayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485E42642EE50006DE482 /* LindenmayerSystem.swift */; };
@@ -85,6 +88,9 @@
 		814ADAFA248EB45F00F80486 /* AudioInputSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioInputSketch.swift; sourceTree = "<group>"; };
 		814ADAFC248EB56900F80486 /* EmptySketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySketch.swift; sourceTree = "<group>"; };
 		814ADAFE248EB5E300F80486 /* StaticSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticSketch.swift; sourceTree = "<group>"; };
+		81537A44265FCE0400A50C54 /* ilana-fern-plant.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ilana-fern-plant.json"; sourceTree = "<group>"; };
+		81537A46265FCE4000A50C54 /* TemporarySceneSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporarySceneSketch.swift; sourceTree = "<group>"; };
+		81537A48265FD23B00A50C54 /* gordon-triangle-sketch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "gordon-triangle-sketch.json"; sourceTree = "<group>"; };
 		817485DC2642EDA3006DE482 /* Successor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Successor.swift; sourceTree = "<group>"; };
 		817485DF2642EDDC006DE482 /* Predecessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predecessor.swift; sourceTree = "<group>"; };
 		817485E42642EE50006DE482 /* LindenmayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LindenmayerSystem.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 				81CDA827265E9C3800E2E9BB /* TriangleSketch.swift */,
 				81CDA829265E9F0D00E2E9BB /* LeafSketch.swift */,
 				81CDA82B265EA10D00E2E9BB /* LeafyPlantSketch.swift */,
+				81537A46265FCE4000A50C54 /* TemporarySceneSketch.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -272,9 +279,11 @@
 		81A7E5AC26458D9A00974F24 /* SystemCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				81537A44265FCE0400A50C54 /* ilana-fern-plant.json */,
 				81C150F726459CFC009D5AC6 /* gordon-basic-branching-tree.json */,
 				81A7E5AD26458DE400974F24 /* scott-berry-tree.json */,
 				81CDA82D265EB7D600E2E9BB /* gordon-leafy-plant.json */,
+				81537A48265FD23B00A50C54 /* gordon-triangle-sketch.json */,
 			);
 			name = SystemCatalog;
 			sourceTree = "<group>";
@@ -520,7 +529,9 @@
 			files = (
 				81064A0E1C130A10007ED524 /* Assets.xcassets in Resources */,
 				81064A111C130A10007ED524 /* Main.storyboard in Resources */,
+				81537A45265FCE0400A50C54 /* ilana-fern-plant.json in Resources */,
 				81A7E5AE26458DE400974F24 /* scott-berry-tree.json in Resources */,
+				81537A49265FD23B00A50C54 /* gordon-triangle-sketch.json in Resources */,
 				81CDA82E265EB7D600E2E9BB /* gordon-leafy-plant.json in Resources */,
 				81C150F926459E1F009D5AC6 /* gordon-basic-branching-tree.json in Resources */,
 			);
@@ -544,6 +555,7 @@
 				81064A0C1C130A10007ED524 /* ViewController.swift in Sources */,
 				81064A1C1C132DA2007ED524 /* Sketch.swift in Sources */,
 				819F9E6E26415FDC00C7883F /* LindenmayerSystemSketch.swift in Sources */,
+				81537A47265FCE4000A50C54 /* TemporarySceneSketch.swift in Sources */,
 				81CDA82A265E9F0D00E2E9BB /* LeafSketch.swift in Sources */,
 				81064A0A1C130A10007ED524 /* AppDelegate.swift in Sources */,
 				81CDA831265EC1B400E2E9BB /* LSColor.swift in Sources */,

@@ -16,10 +16,12 @@ class Sketch: NSObject {
 //    var currentDrawing = TurtleSketch()
 //    var currentDrawing = AudioInputSketch()
 //    var currentDrawing = StaticSketch()
-//    var currentDrawing =  LindenmayerSystemSketch()
-//    var currentDrawing =  PerlinNoiseSketch()
-//    var currentDrawing =  TriangleSketch()
-//    var currentDrawing =  LeafSketch()
-    var currentDrawing =  LeafyPlantSketch()
+//    var currentDrawing = LindenmayerSystemSketch()
+//    var currentDrawing = PerlinNoiseSketch()
+//    var currentDrawing = TriangleSketch()
+//    var currentDrawing = TemporarySceneSketch()
+//    var currentDrawing = LeafSketch()
+//    var currentDrawing = LeafyPlantSketch()
+    var currentDrawing = LeafSketch()
 
 }
