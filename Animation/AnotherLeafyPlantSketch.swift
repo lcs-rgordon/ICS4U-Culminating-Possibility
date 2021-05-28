@@ -29,8 +29,8 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                             "G" : [
                                                 Successor(odds: 1, text: """
                                                                             3[FF]
-                                                                            4[+FL]
-                                                                            5[-FL]
+                                                                            4[++++++FL]
+                                                                            5[------FL]
                                                                             """),
                                             ],
                                             "T" : [
@@ -66,7 +66,7 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
         // Define the visualization
         var visualizedLeafyPlant = Visualizer(for: leafyPlant,
                                               on: canvas,
-                                              length: 45,
+                                              length: 135,
                                               reduction: 3,
                                               angle: 5,
                                               initialPosition: Point(x: 100, y: 100),
