@@ -60,12 +60,12 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                                             """),
                                             ],
                                            ],
-                                           generations: 3)
+                                           generations: 4)
         
         // Define the visualization
         var visualizedLeafyPlant = Visualizer(for: leafyPlant,
                                               on: canvas,
-                                              length: 135,
+                                              length: 405,
                                               reduction: 3,
                                               angle: 5,
                                               initialPosition: Point(x: 100, y: 100),
