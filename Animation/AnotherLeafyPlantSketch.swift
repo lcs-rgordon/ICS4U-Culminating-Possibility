@@ -1,8 +1,7 @@
 import Foundation
 import CanvasGraphics
 
-// NOTE: This is a completely empty sketch; it can be used as a template.
-class LeafSketch: NSObject, Sketchable {
+class AnotherLeafyPlantSketch: NSObject, Sketchable {
     
     // NOTE: Every sketch must contain an object of type Canvas named 'canvas'
     //       Therefore, the line immediately below must always be present.
@@ -14,12 +13,18 @@ class LeafSketch: NSObject, Sketchable {
         // Create canvas object – specify size
         canvas = Canvas(width: 500, height: 500)
         
-        // Enable faster rendering
+        // Turn on high performance
         canvas.highPerformance = true
         
-        // Create the basic L-system
-        var leafSystem = LindenmayerSystem(axiom: "L",
+        // Define the basic system
+        var leafyPlant = LindenmayerSystem(axiom: "S",
                                            rules: [
+                                            "S" : [
+                                                Successor(odds: 1, text: "0T1G2L"),
+                                            ],
+                                            "T" : [
+                                                Successor(odds: 1, text: "F+F+F+F+F+F+F+F+F+F+F+F+")
+                                            ],
                                             "L": [
                                                 Successor(odds: 1, text: """
                                                                             0[++++++F--F--F--F--F--F--F]
@@ -32,36 +37,32 @@ class LeafSketch: NSObject, Sketchable {
                                                                             """),
                                             ],
                                            ],
-                                           generations: 1)
+                                           generations: 2)
         
-        // Visualize the system
-        var visualizedLeaf = Visualizer(for: leafSystem,
-                                            on: canvas,
-                                            length: 90,
-                                            reduction: 3,
-                                            angle: 5,
-                                            initialPosition: Point(x: 100, y: 400),
-                                            initialHeading: 0,
-                                            colors: [
-                                                "0" : LSColor(hue: 113, saturation: 100, brightness: 40, alpha: 100),
-                                                "1" : LSColor(hue: 113, saturation: 100, brightness: 50, alpha: 100),
-                                                "2" : LSColor(hue: 113, saturation: 100, brightness: 60, alpha: 100),
-                                                "3" : LSColor(hue: 113, saturation: 100, brightness: 70, alpha: 100),
-                                            ])
+        // Define the visualization
+        var visualizedLeafyPlant = Visualizer(for: leafyPlant,
+                                              on: canvas,
+                                              length: 30,
+                                              reduction: 1,
+                                              angle: 30,
+                                              initialPosition: Point(x: 100, y: 100),
+                                              initialHeading: 90,
+                                              colors: [
+                                                "0" : LSColor.black,
+                                                "1" : LSColor.green,
+                                                "2" : LSColor.orange,
+                                              ])
         
         // Render the system
-        visualizedLeaf.render()
+        visualizedLeafyPlant.render()
         
-        leafSystem.generate()
-        
-        visualizedLeaf.printJSONRepresentation()
+        leafyPlant.generate()
         
     }
     
     // This function runs repeatedly, forever, to create the animated effect
     func draw() {
         
-        // Nothing is being animated, so nothing needed here
         
     }
     

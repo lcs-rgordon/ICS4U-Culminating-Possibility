@@ -226,6 +226,10 @@ struct Visualizer: Codable {
             
             // Render based on this character
             switch character {
+            case "\n":
+                // Ignore line breaks
+                // This allows us to use multi-line strings when defining axioms and rules
+                break
             case "0":
                 // Placeholder for changing colour
                 turtle?.setPenColor(to: colors["0"]?.expectedColor() ?? Color.black)
