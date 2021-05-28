@@ -42,6 +42,14 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                                             4[+++++++++XFL]
                                                                             5[---------XFL]
                                                                             """),
+                                                Successor(odds: 1, text: """
+                                                                            4[+++++++XFL]
+                                                                            5[---------XFL]
+                                                                            """),
+                                                Successor(odds: 1, text: """
+                                                                            4[+++++++++XFL]
+                                                                            5[-------XFL]
+                                                                            """),
                                             ],
                                             "L": [
                                                 Successor(odds: 1, text: """
