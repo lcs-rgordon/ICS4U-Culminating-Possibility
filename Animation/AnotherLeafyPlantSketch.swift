@@ -29,7 +29,7 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                 Successor(odds: 1, text: """
                                                                             3[FF]
                                                                             4[+++++++++++++FHFFL]
-                                                                            5[-------------FHFFL]
+                                                                            5[FF-------------FHFFL]
                                                                             """),
                                             ],
                                             "H" : [
