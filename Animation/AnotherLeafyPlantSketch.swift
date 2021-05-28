@@ -23,7 +23,20 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                                 Successor(odds: 1, text: "0T1G2L"),
                                             ],
                                             "T" : [
-                                                Successor(odds: 1, text: "F+F+F+F+F+F+F+F+F+F+F+F+")
+                                                Successor(odds: 1, text: """
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            F++++++
+                                                                            """)
                                             ],
                                             "L": [
                                                 Successor(odds: 1, text: """
@@ -44,7 +57,7 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                               on: canvas,
                                               length: 30,
                                               reduction: 1,
-                                              angle: 30,
+                                              angle: 5,
                                               initialPosition: Point(x: 100, y: 100),
                                               initialHeading: 90,
                                               colors: [
