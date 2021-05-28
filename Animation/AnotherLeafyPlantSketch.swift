@@ -21,7 +21,7 @@ class AnotherLeafyPlantSketch: NSObject, Sketchable {
                                            rules: [
                                             "S" : [
                                                 Successor(odds: 1, text: """
-                                                                            0T
+                                                                            0[++++++++++++++++++T]
                                                                             1FFFFG
                                                                             2L
                                                                             """),
