@@ -24,6 +24,8 @@
 		81537A47265FCE4000A50C54 /* TemporarySceneSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81537A46265FCE4000A50C54 /* TemporarySceneSketch.swift */; };
 		81537A49265FD23B00A50C54 /* gordon-triangle-sketch.json in Resources */ = {isa = PBXBuildFile; fileRef = 81537A48265FD23B00A50C54 /* gordon-triangle-sketch.json */; };
 		81537A4C266130A300A50C54 /* AnotherLeafyPlantSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81537A4B266130A300A50C54 /* AnotherLeafyPlantSketch.swift */; };
+		81537A4E26617E0B00A50C54 /* aidan-Cattail-sketch.json in Resources */ = {isa = PBXBuildFile; fileRef = 81537A4D26617E0B00A50C54 /* aidan-Cattail-sketch.json */; };
+		81537A5026617E1800A50C54 /* CattailSketch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81537A4F26617E1800A50C54 /* CattailSketch.swift */; };
 		817485DD2642EDA3006DE482 /* Successor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485DC2642EDA3006DE482 /* Successor.swift */; };
 		817485E02642EDDC006DE482 /* Predecessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485DF2642EDDC006DE482 /* Predecessor.swift */; };
 		817485E52642EE50006DE482 /* LindenmayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817485E42642EE50006DE482 /* LindenmayerSystem.swift */; };
@@ -93,6 +95,8 @@
 		81537A46265FCE4000A50C54 /* TemporarySceneSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporarySceneSketch.swift; sourceTree = "<group>"; };
 		81537A48265FD23B00A50C54 /* gordon-triangle-sketch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "gordon-triangle-sketch.json"; sourceTree = "<group>"; };
 		81537A4B266130A300A50C54 /* AnotherLeafyPlantSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherLeafyPlantSketch.swift; sourceTree = "<group>"; };
+		81537A4D26617E0B00A50C54 /* aidan-Cattail-sketch.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "aidan-Cattail-sketch.json"; sourceTree = "<group>"; };
+		81537A4F26617E1800A50C54 /* CattailSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CattailSketch.swift; sourceTree = "<group>"; };
 		817485DC2642EDA3006DE482 /* Successor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Successor.swift; sourceTree = "<group>"; };
 		817485DF2642EDDC006DE482 /* Predecessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predecessor.swift; sourceTree = "<group>"; };
 		817485E42642EE50006DE482 /* LindenmayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LindenmayerSystem.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				81CDA82B265EA10D00E2E9BB /* LeafyPlantSketch.swift */,
 				81537A46265FCE4000A50C54 /* TemporarySceneSketch.swift */,
 				81537A4B266130A300A50C54 /* AnotherLeafyPlantSketch.swift */,
+				81537A4F26617E1800A50C54 /* CattailSketch.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 		81A7E5AC26458D9A00974F24 /* SystemCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				81537A4D26617E0B00A50C54 /* aidan-Cattail-sketch.json */,
 				81537A44265FCE0400A50C54 /* ilana-fern-plant.json */,
 				81C150F726459CFC009D5AC6 /* gordon-basic-branching-tree.json */,
 				81A7E5AD26458DE400974F24 /* scott-berry-tree.json */,
@@ -534,6 +540,7 @@
 				81064A111C130A10007ED524 /* Main.storyboard in Resources */,
 				81537A45265FCE0400A50C54 /* ilana-fern-plant.json in Resources */,
 				81A7E5AE26458DE400974F24 /* scott-berry-tree.json in Resources */,
+				81537A4E26617E0B00A50C54 /* aidan-Cattail-sketch.json in Resources */,
 				81537A49265FD23B00A50C54 /* gordon-triangle-sketch.json in Resources */,
 				81CDA82E265EB7D600E2E9BB /* gordon-leafy-plant.json in Resources */,
 				81C150F926459E1F009D5AC6 /* gordon-basic-branching-tree.json in Resources */,
@@ -571,6 +578,7 @@
 				817485E82642EFC6006DE482 /* Visualizer.swift in Sources */,
 				814ADAFB248EB45F00F80486 /* AudioInputSketch.swift in Sources */,
 				814ADAF1248E9F8200F80486 /* AudioAnalyser.swift in Sources */,
+				81537A5026617E1800A50C54 /* CattailSketch.swift in Sources */,
 				814ADAF3248E9FDA00F80486 /* Sketchable.swift in Sources */,
 				81827CA2265E9B5E00041784 /* PerlinNoiseSketch.swift in Sources */,
 				814ADAFD248EB56900F80486 /* EmptySketch.swift in Sources */,

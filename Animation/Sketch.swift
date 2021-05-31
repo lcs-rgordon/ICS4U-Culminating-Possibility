@@ -21,8 +21,9 @@ class Sketch: NSObject {
 //    var currentDrawing = TriangleSketch()
 //    var currentDrawing = TemporarySceneSketch()
 //    var currentDrawing = LeafSketch()
-//    var currentDrawing = LeafyPlantSketch()
-    var currentDrawing = AnotherLeafyPlantSketch()
+    var currentDrawing = LeafyPlantSketch()
+//    var currentDrawing = AnotherLeafyPlantSketch()
+//    var currentDrawing = CattailSketch()
 //    var currentDrawing = LeafSketch()
 
 }
